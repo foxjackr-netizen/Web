@@ -1,0 +1,111 @@
+:root {
+    --bg-base: #F4F0EB;
+    --bg-elevated: #FAFAF7;
+    --text-main: #2A1F1A;
+    --accent-primary: #B64E28;
+    --accent-secondary: #7C8566;
+    
+    --shadow-base: 0 10px 40px -10px rgba(42,31,26,0.08);
+    --shadow-elevated: 0 20px 50px -15px rgba(42,31,26,0.15);
+    --shadow-floating: 0 30px 60px -20px rgba(42,31,26,0.2), 0 0 0 1px rgba(182, 78, 40, 0.05);
+}
+
+body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Utilidades CSS */
+.text-primary { color: var(--accent-primary); }
+.text-secondary { color: var(--accent-secondary); }
+.bg-primary { background-color: var(--accent-primary); }
+.bg-elevated { background-color: var(--bg-elevated); }
+
+.shadow-layered { box-shadow: var(--shadow-base); }
+.shadow-layered-lg { box-shadow: var(--shadow-elevated); }
+.shadow-floating { box-shadow: var(--shadow-floating); }
+
+/* Animaciones */
+.spring-hover {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                opacity 0.3s ease;
+}
+.spring-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-floating);
+}
+
+.btn-hover {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+}
+.btn-hover:hover {
+    transform: translateY(-2px);
+}
+.btn-hover:active {
+    transform: translateY(1px);
+}
+
+/* Tratamiento de imágenes */
+.img-blend {
+    mix-blend-mode: multiply;
+    filter: contrast(1.1) sepia(0.2) saturate(0.9);
+}
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #E2C792; /* Color base para fusionar */
+}
+.img-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(42,31,26,0.7) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* Resplandores Radiales */
+.glow-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- Nuevas Clases JS --- */
+.hide-item {
+    display: none !important;
+}
+
+#product-modal {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+#product-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+#product-modal .modal-content {
+    transform: scale(0.95) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#product-modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+#mobile-menu {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+#mobile-menu.active {
+    transform: translateY(0);
+}
