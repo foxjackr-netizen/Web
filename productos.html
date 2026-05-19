@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Gao Panadería Artesanal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased selection:bg-[#B64E28] selection:text-[#F4F0EB]">
+    <!-- Resplandores Ambientales -->
+    <div class="glow-blob bg-[#B64E28] w-[600px] h-[600px] top-[-200px] left-[-200px] fixed"></div>
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-40 top-0 py-6 px-8 flex justify-between items-center bg-[#F4F0EB]/80 backdrop-blur-md border-b border-[#2A1F1A]/5">
+        <a href="index.html" class="font-display text-2xl font-bold tracking-tighter text-[#2A1F1A]">Gao.</a>
+        
+        <div class="hidden md:flex gap-10 text-sm font-medium tracking-wide uppercase">
+            <a href="index.html" class="hover:text-[#B64E28] transition-colors duration-300">Inicio</a>
+            <a href="productos.html" class="text-[#B64E28] transition-colors duration-300">Productos</a>
+            <a href="nosotros.html" class="hover:text-[#B64E28] transition-colors duration-300">Nosotros</a>
+            <a href="contacto.html" class="hover:text-[#B64E28] transition-colors duration-300">Contacto</a>
+        </div>
+        
+        <button id="btn-menu" class="md:hidden text-[#2A1F1A]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        
+        <a href="productos.html" class="hidden md:block bg-[#2A1F1A] text-[#F4F0EB] px-6 py-2.5 rounded-full text-sm font-medium tracking-wide btn-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B64E28] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F0EB]">
+            Hacer Pedido
+        </a>
+    </nav>
+
+    <!-- Capa del Menú Móvil -->
+    <div id="mobile-menu" class="fixed inset-0 z-30 bg-[#F4F0EB] flex flex-col justify-center items-center gap-8 text-xl font-display font-bold uppercase tracking-widest border-b border-[#2A1F1A]/10">
+        <a href="index.html" class="hover:text-[#B64E28]">Inicio</a>
+        <a href="productos.html" class="text-[#B64E28]">Productos</a>
+        <a href="nosotros.html" class="hover:text-[#B64E28]">Nosotros</a>
+        <a href="contacto.html" class="hover:text-[#B64E28]">Contacto</a>
+    </div>
+
+    <main class="pt-32 pb-20 px-6 md:px-16 max-w-7xl mx-auto min-h-screen">
+        <div class="text-center mb-16">
+            <h1 class="font-display text-5xl md:text-6xl font-bold tracking-tighter mb-4">Nuestro Catálogo</h1>
+            <p class="max-w-2xl mx-auto text-lg opacity-80">Explora nuestra variedad de delicias horneadas todos los días.</p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="filter-btn bg-[#B64E28] text-[#F4F0EB] px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-colors border border-[#B64E28]" data-filter="all">Todos</button>
+            <button class="filter-btn bg-transparent text-[#2A1F1A] px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-colors border border-[#2A1F1A]/20 hover:border-[#2A1F1A]" data-filter="pan-dulce">Pan Dulce</button>
+            <button class="filter-btn bg-transparent text-[#2A1F1A] px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-colors border border-[#2A1F1A]/20 hover:border-[#2A1F1A]" data-filter="salado">Salado</button>
+            <button class="filter-btn bg-transparent text-[#2A1F1A] px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-colors border border-[#2A1F1A]/20 hover:border-[#2A1F1A]" data-filter="pasteles">Pasteles y Galletas</button>
+        </div>
+
+        <!-- Cuadrícula de Productos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="product-grid">
+            
+            <div class="product-card bg-[#FAFAF7] rounded-2xl overflow-hidden shadow-layered spring-hover border border-[#2A1F1A]/5 flex flex-col" data-category="pan-dulce">
+                <div class="h-[220px] w-full img-wrapper overflow-hidden cursor-pointer btn-reservar">
+                    <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Roles de Canela" class="w-full h-full object-cover img-blend transform hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="product-title font-display text-2xl font-bold mb-1">Roles de Canela</h3>
+                        <p class="text-xs uppercase tracking-widest text-primary font-bold mb-3">Original / Lotus / Fresa / Oreo</p>
+                        <p class="product-desc leading-[1.6] opacity-80 mb-4 text-sm">Masa suave y esponjosa, abundante relleno y glaseados cremosos irresistibles.</p>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-[#2A1F1A]/10 pt-4 mt-auto">
+                        <span class="product-price font-bold text-lg">$60 MXN</span>
+                        <button class="btn-reservar text-sm font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors">Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-[#FAFAF7] rounded-2xl overflow-hidden shadow-layered spring-hover border border-[#2A1F1A]/5 flex flex-col" data-category="pan-dulce">
+                <div class="h-[220px] w-full img-wrapper overflow-hidden cursor-pointer btn-reservar">
+                    <img src="https://images.unsplash.com/photo-1617859047277-9f47d2bd9696?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Conchas" class="w-full h-full object-cover img-blend transform hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="product-title font-display text-2xl font-bold mb-1">Conchas</h3>
+                        <p class="text-xs uppercase tracking-widest text-primary font-bold mb-3">Vainilla y Chocolate</p>
+                        <p class="product-desc leading-[1.6] opacity-80 mb-4 text-sm">Pan dulce mexicano tradicional con costra crujiente de azúcar.</p>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-[#2A1F1A]/10 pt-4 mt-auto">
+                        <span class="product-price font-bold text-lg">$15 MXN</span>
+                        <button class="btn-reservar text-sm font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors">Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-[#FAFAF7] rounded-2xl overflow-hidden shadow-layered spring-hover border border-[#2A1F1A]/5 flex flex-col" data-category="pan-dulce">
+                <div class="h-[220px] w-full img-wrapper overflow-hidden cursor-pointer btn-reservar">
+                    <img src="https://images.unsplash.com/photo-1637861004744-0f846ef2df40?q=80&w=721&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Muffins" class="w-full h-full object-cover img-blend transform hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="product-title font-display text-2xl font-bold mb-1">Muffins</h3>
+                        <p class="text-xs uppercase tracking-widest text-primary font-bold mb-3">Vainilla / Chocolate</p>
+                        <p class="product-desc leading-[1.6] opacity-80 mb-4 text-sm">Esponjosos y húmedos, horneados frescos todos los días.</p>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-[#2A1F1A]/10 pt-4 mt-auto">
+                        <span class="product-price font-bold text-lg">$15 MXN</span>
+                        <button class="btn-reservar text-sm font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors">Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-[#FAFAF7] rounded-2xl overflow-hidden shadow-layered spring-hover border border-[#2A1F1A]/5 flex flex-col" data-category="salado">
+                <div class="h-[220px] w-full img-wrapper overflow-hidden cursor-pointer btn-reservar">
+                    <img src="https://images.unsplash.com/photo-1753656681797-3234c89d6d4d?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Calzone" class="w-full h-full object-cover img-blend transform hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="product-title font-display text-2xl font-bold mb-1">Calzone</h3>
+                        <p class="text-xs uppercase tracking-widest text-primary font-bold mb-3">Pepperoni y Queso</p>
+                        <p class="product-desc leading-[1.6] opacity-80 mb-4 text-sm">Opción salada recién horneada con queso derretido, tomate y pepperoni.</p>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-[#2A1F1A]/10 pt-4 mt-auto">
+                        <span class="product-price font-bold text-lg">$30 MXN</span>
+                        <button class="btn-reservar text-sm font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors">Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-[#FAFAF7] rounded-2xl overflow-hidden shadow-layered spring-hover border border-[#2A1F1A]/5 flex flex-col" data-category="salado">
+                <div class="h-[220px] w-full img-wrapper overflow-hidden cursor-pointer btn-reservar">
+                    <img src="https://plus.unsplash.com/premium_photo-1667806844867-8142ccdb5ed0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pan Birote" class="w-full h-full object-cover img-blend transform hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="product-title font-display text-2xl font-bold mb-1">Pan Birote</h3>
+                        <p class="text-xs uppercase tracking-widest text-primary font-bold mb-3">Pieza Individual</p>
+                        <p class="product-desc leading-[1.6] opacity-80 mb-4 text-sm">Pan artesanal tradicional con corteza crujiente y miga suave, horneado diariamente.</p>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-[#2A1F1A]/10 pt-4 mt-auto">
+                        <span class="product-price font-bold text-lg">$10 MXN</span>
+                        <button class="btn-reservar text-sm font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors">Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-[#FAFAF7] rounded-2xl overflow-hidden shadow-layered spring-hover border border-[#2A1F1A]/5 flex flex-col" data-category="pasteles">
+                <div class="h-[220px] w-full img-wrapper overflow-hidden cursor-pointer btn-reservar">
+                    <img src="https://images.unsplash.com/photo-1676300186098-9b5ae9916e3c?q=80&w=690&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pastel de Zanahoria" class="w-full h-full object-cover img-blend transform hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="product-title font-display text-2xl font-bold mb-1">Pastel Zanahoria</h3>
+                        <p class="text-xs uppercase tracking-widest text-primary font-bold mb-3">Individual / Entero</p>
+                        <p class="product-desc leading-[1.6] opacity-80 mb-4 text-sm">Nuestro icónico pastel de zanahoria con betún cremoso. Disponible en porción personal o tamaño familiar (8-12 pax).</p>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-[#2A1F1A]/10 pt-4 mt-auto">
+                        <span class="product-price font-bold text-lg">$65 / $350 MXN</span>
+                        <button class="btn-reservar text-sm font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors">Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-[#FAFAF7] rounded-2xl overflow-hidden shadow-layered spring-hover border border-[#2A1F1A]/5 flex flex-col" data-category="pasteles">
+                <div class="h-[220px] w-full img-wrapper overflow-hidden cursor-pointer btn-reservar">
+                    <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Galletas con Chispas" class="w-full h-full object-cover img-blend transform hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="product-title font-display text-2xl font-bold mb-1">Chocochip</h3>
+                        <p class="text-xs uppercase tracking-widest text-primary font-bold mb-3">Galleta Clásica</p>
+                        <p class="product-desc leading-[1.6] opacity-80 mb-4 text-sm">Crujientes en las orillas, suaves y chiclosas en el centro.</p>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-[#2A1F1A]/10 pt-4 mt-auto">
+                        <span class="product-price font-bold text-lg">$25 MXN</span>
+                        <button class="btn-reservar text-sm font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors">Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-[#FAFAF7] rounded-2xl overflow-hidden shadow-layered spring-hover border border-[#2A1F1A]/5 flex flex-col" data-category="pasteles">
+                <div class="h-[220px] w-full img-wrapper overflow-hidden cursor-pointer btn-reservar">
+                    <img src="https://images.unsplash.com/photo-1654178990976-b88c403b3257?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Galletas Doble Chocolate" class="w-full h-full object-cover img-blend transform hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="product-title font-display text-2xl font-bold mb-1">Doble Chocolate</h3>
+                        <p class="text-xs uppercase tracking-widest text-primary font-bold mb-3">Masa y Chispas</p>
+                        <p class="product-desc leading-[1.6] opacity-80 mb-4 text-sm">El sueño de los amantes del chocolate en una galleta rica y oscura.</p>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-[#2A1F1A]/10 pt-4 mt-auto">
+                        <span class="product-price font-bold text-lg">$25 MXN</span>
+                        <button class="btn-reservar text-sm font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors">Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal de Producto -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#2A1F1A]/80 backdrop-blur-sm">
+        <div class="modal-content bg-[#F4F0EB] rounded-2xl overflow-hidden max-w-4xl w-full flex flex-col md:flex-row shadow-2xl relative">
+            <button id="modal-close" class="absolute top-4 right-4 z-10 bg-[#FAFAF7] w-10 h-10 rounded-full flex items-center justify-center text-[#2A1F1A] hover:bg-[#B64E28] hover:text-[#F4F0EB] transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="w-full md:w-1/2 h-64 md:h-auto img-wrapper">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover img-blend">
+            </div>
+            <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                <h2 id="modal-title" class="font-display text-4xl font-bold mb-4 text-[#2A1F1A]">Título</h2>
+                <p id="modal-desc" class="text-lg opacity-80 mb-8 leading-relaxed">Descripción</p>
+                <div class="flex items-center justify-between border-t border-[#2A1F1A]/10 pt-6">
+                    <span id="modal-price" class="font-bold text-2xl text-[#B64E28]">Precio</span>
+                    <button class="bg-[#2A1F1A] text-[#F4F0EB] px-8 py-3 rounded-full text-sm font-bold tracking-wide uppercase btn-hover shadow-layered">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer class="bg-[#2A1F1A] text-[#F4F0EB] py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-16 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-2">
+                    <div class="font-display text-5xl font-bold tracking-tighter mb-6">Gao.</div>
+                    <p class="max-w-sm opacity-70 leading-[1.7] mb-8">Panadería artesanal. Respeto por los procesos, amor por el oficio.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-sm text-[#7C8566] mb-6">Encuéntranos</h4>
+                    <p class="opacity-80 leading-[1.8]">
+                        Blvd. Kino, Local 4<br/>Colonia Pitic<br/>Hermosillo, Sonora, México
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold uppercase tracking-widest text-sm text-[#7C8566] mb-6">Horarios</h4>
+                    <p class="opacity-80 leading-[1.8]">
+                        Mar - Sáb: 08:00 - 15:00<br/>Dom: 09:00 - 14:00<br/>Lunes: Cerrado (Amasando)
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-[#F4F0EB]/10 mt-16 pt-8 text-sm opacity-50 flex flex-col md:flex-row justify-between">
+                <p>&copy; 2026 Gao Panadería Artesanal. Todos los derechos reservados.</p>
+                <p class="mt-2 md:mt-0">Diseñado con paciencia absoluta.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
